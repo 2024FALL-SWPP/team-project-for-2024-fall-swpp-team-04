@@ -4,32 +4,40 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-	[SerializeField] private List<GameObject> spawnerObjects;
-	[SerializeField] private float _time = 5f;
-	[SerializeField] private int _enemies = 3;
-	[SerializeField] private float _customDelay = 0.3f;
-
+	[SerializeField] private List<GameObject> _spawnerObjects;
+	[SerializeField] private List<float> _spawnTimes;
+	[SerializeField] private List<int> _enemyCounts; 
+	[SerializeField] private List<float> _customDelays; 
 	private List<IEnemyFactory> _spawners = new List<IEnemyFactory>();
 	private int _currentSpawnerIndex = 0;
 
 	void Start()
 	{
-		foreach (var obj in spawnerObjects)
+		foreach (var obj in _spawnerObjects)
 		{
 			var spawner = obj.GetComponent<IEnemyFactory>();
-			_spawners.Add(spawner);
+			if (spawner != null)
+			{
+				_spawners.Add(spawner);
+			}
 		}
 
-		InvokeRepeating(nameof(SpawnEnemies), 0f, _time);
+		if (_spawners.Count > 0)
+		{
+			Invoke(nameof(SpawnEnemies), _spawnTimes[_currentSpawnerIndex]);
+		}
 	}
 
 	private void SpawnEnemies()
 	{
-		for (int i = 0; i < _enemies; i++)
+		int enemyCount = _enemyCounts[_currentSpawnerIndex];
+		float customDelay = _customDelays[_currentSpawnerIndex];
+
+		for (int i = 0; i < enemyCount; i++)
 		{
 			if (_spawners[_currentSpawnerIndex] is DelayedSpawner delayedSpawner)
 			{
-				delayedSpawner.SetTimer(i * _customDelay);
+				delayedSpawner.SetTimer(i * customDelay);
 			}
 			else
 			{
@@ -38,6 +46,7 @@ public class SpawnerManager : MonoBehaviour
 		}
 
 		_currentSpawnerIndex = (_currentSpawnerIndex + 1) % _spawners.Count;
-	}
 
+		Invoke(nameof(SpawnEnemies), _spawnTimes[_currentSpawnerIndex]);
+	}
 }

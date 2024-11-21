@@ -20228,14 +20228,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4efa333d2638ab4a8f6d5915b430580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerObjects:
+  _spawnerObjects:
   - {fileID: 1838511069}
   - {fileID: 1655661693}
   - {fileID: 869711521}
   - {fileID: 574200389}
-  _time: 5
-  _enemies: 3
-  _customDelay: 0.3
+  _spawnTimes:
+  - 5
+  - 4
+  - 3
+  - 2
+  _enemyCounts: 0300000005000000070000000a000000
+  _customDelays:
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
 --- !u!4 &965548094
 Transform:
   m_ObjectHideFlags: 0
