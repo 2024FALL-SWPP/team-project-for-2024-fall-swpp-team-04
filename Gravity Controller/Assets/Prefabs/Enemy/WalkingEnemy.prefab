@@ -113,15 +113,15 @@ MonoBehaviour:
   _obstacleDetectionRange: 5
   _changeDirectionIntervalMin: 2
   _changeDirectionIntervalMax: 3
-  _chaseSpeed: 4
-  _chaseRange: 7
+  _chaseSpeed: 15
+  _chaseRange: 100
   _attackRange: 1.5
   _attackHitRange: 2
   _sightRange: 15
   _awarenessCoolDown: 3
   _frontOffset: 0.35
   _attackAnimationLength: 1.25
-  _maxHp: 3
+  _maxHp: 1
   _beforeDeathTime: 2
   _dissolveSpeed: 1
   _dissolveTime: 5
