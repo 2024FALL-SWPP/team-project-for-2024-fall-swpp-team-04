@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 122154, guid: b083cedd8a36a473da0bf81e5b281753, type: 3}
   _projectileSpeed: 10
-  _wanderSpeed: 3
+  _wanderSpeed: 10
   _wanderRange: 7
   _verticalDirectionRange: 10
   _changeDirectionIntervalMin: 1.5

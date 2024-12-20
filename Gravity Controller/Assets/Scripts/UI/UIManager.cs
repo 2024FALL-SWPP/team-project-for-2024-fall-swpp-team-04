@@ -202,12 +202,10 @@ public class UIManager : MonoBehaviour
 		yield return new WaitForSeconds(2f);
 		_warningTriangle.SetActive(false);
 
+		float duration = 28f;
+		float elapsed = 0f;
 		_progressBar.value = 0;
 		_progressBar.gameObject.SetActive(true);
-
-		float duration = 60f;
-		float elapsed = 0f;
-
 		while (elapsed < duration)
 		{
 			elapsed += Time.deltaTime;
