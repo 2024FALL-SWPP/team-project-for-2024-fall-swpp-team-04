@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int _maxBullet;
     [SerializeField] private float _shootCooldown;
     [SerializeField] private float _reloadTime;
+    [SerializeField] private int _damage = 3;
 
-    [SerializeField] private GameObject _gunGameObject;
+	[SerializeField] private GameObject _gunGameObject;
 	// to set direction of raycast
 	  private Transform _camera;
     
@@ -192,8 +193,10 @@ public class PlayerController : MonoBehaviour
 				var targetAttackReceiver = hit.collider.gameObject.GetComponent<IAttackReceiver>();
 				if (targetAttackReceiver != null)
 				{
-					targetAttackReceiver.OnHit();
-                }
+					for (int i = 0; i < _damage; i++){
+						targetAttackReceiver.OnHit();
+					}
+				}
             }
             UIManager.Instance.UpdateBullet(_currentBullet, _maxBullet);
             UIManager.Instance.CrossHairFire();
